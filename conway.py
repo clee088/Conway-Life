@@ -13,7 +13,8 @@ white = Color(0xffffff, 1)
 grey = Color(0xC0C0C0, 1)
 noline = LineStyle(1, grey)
 
-
+grid = RectangleAsset(500, 500, noline, white)
+grid = Sprite(grid, (0,0))
 #--
 class cell(Sprite):
     def __init__(self, position):
@@ -34,6 +35,8 @@ class map(App):
         grid = RectangleAsset(500, 500, noline, white)
         grid = Sprite(grid, (0,0))
         cell((0, 0))
-        cell((50, 0))
+        cell
+        
+        
 myapp = map()
 myapp.run()
