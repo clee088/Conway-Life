@@ -34,9 +34,14 @@ class map(App):
         super().__init__()
         grid = RectangleAsset(500, 500, noline, white)
         grid = Sprite(grid, (0,0))
-        cell((0, 0))
-        cell
-        
+        x = 0
+        y = 0
+        for i in range(5):
+            for i in range(2):
+                cell((x, y))
+                y += 50
+                x += 50
+            
         
 myapp = map()
 myapp.run()
