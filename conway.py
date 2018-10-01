@@ -18,8 +18,8 @@ noline = LineStyle(1, grey)
 class cell(Sprite):
     def __init__(self, position):
         c = RectangleAsset(50, 50, noline, white)
-        super().__init__(c.asset, position)
-        c = Sprite(cell)
+        super().__init__(c, position)
+        
 
 
 #--
@@ -34,6 +34,6 @@ class map(App):
         grid = RectangleAsset(500, 500, noline, white)
         grid = Sprite(grid, (0,0))
         cell((0, 0))
-
+        cell((50, 0))
 myapp = map()
 myapp.run()
