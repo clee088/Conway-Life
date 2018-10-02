@@ -23,8 +23,6 @@ class cell(Sprite):
         c = RectangleAsset(50, 50, noline, white)
         super().__init__(c, position)
         
-
-
 #===============================================================================
 def row(x):
     xx = x
