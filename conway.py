@@ -23,6 +23,11 @@ class cell(Sprite):
         c = RectangleAsset(50, 50, noline, white)
         super().__init__(c, position)
         
+class cellblack(Sprite):
+    def __init__(self, position):
+        cc = RectangleAsset(50, 50, noline, black)
+        super().__init__(cc, position)
+        
 #===============================================================================
 def row(x):
     xx = x
@@ -41,7 +46,12 @@ class map(App):
             row(x)
             x += 50
             
+    
+            
+    def mouseClick(self, event):
+        cellblack()
 #===============================================================================
-        
+
 myapp = map()
+myapp.listenMouseEvent('click', map)
 myapp.run()
