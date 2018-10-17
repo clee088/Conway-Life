@@ -18,12 +18,12 @@ noline = LineStyle(1, grey)
 grid = RectangleAsset(500, 500, noline, white)
 grid = Sprite(grid, (0,0))
 #===============================================================================
-class cell(Sprite):
+class grid(Sprite):
     def __init__(self, position):
-        c = RectangleAsset(50, 50, noline, white)
-        super().__init__(c, position)
+        g = RectangleAsset(50, 50, noline, white)
+        super().__init__(g, position)
         
-class cellblack(Sprite):
+class cell(Sprite):
     def __init__(self, position):
         cc = RectangleAsset(50, 50, noline, black)
         super().__init__(cc, position)
@@ -33,7 +33,7 @@ def row(x):
     xx = x
     y = 0
     for i in range(10):
-            cell((xx, y))
+            grid((xx, y))
             y += 50
 #===============================================================================
 class map(App):
@@ -45,13 +45,19 @@ class map(App):
         for i in range(10):
             row(x)
             x += 50
-            
-    
-            
+#-------------------------------------------------------------------------------
     def mouseClick(self, event):
-        cellblack()
+        self.x = 0
+        self.y = 0
+        cell((self.x, self.y))
 #===============================================================================
 
+
+
+
+
+
+
 myapp = map()
-myapp.listenMouseEvent('click', map)
+myapp.listenMouseEvent('mouseClick', map)
 myapp.run()
