@@ -17,6 +17,8 @@ noline = LineStyle(1, grey)
 
 grid = RectangleAsset(500, 500, noline, white)
 grid = Sprite(grid, (0,0))
+
+quantity = 10
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
@@ -50,14 +52,12 @@ class map(App):
         self.x = 0
         self.y = 0
         cell((self.x, self.y))
+#-------------------------------------------------------------------------------
+    def step(self):
+        if cell
 #===============================================================================
 
 
-
-
-
-
-
 myapp = map()
-myapp.listenMouseEvent('mouseClick', map)
+myapp.listenMouseEvent('click', map)
 myapp.run()
