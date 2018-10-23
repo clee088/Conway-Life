@@ -8,6 +8,7 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 """
 #===============================================================================
 from ggame import *
+from math import floor
 #===============================================================================
 #Colors and Lines
 black = Color(0, 1)
@@ -47,17 +48,17 @@ class map(App):
         for i in range(10):
             row(x)
             x += 50
+        map.listenMouseEvent('click', self.mouseClick)
 #-------------------------------------------------------------------------------
     def mouseClick(self, event):
-        self.x = 0
-        self.y = 0
-        cell((self.x, self.y))
+        x = floor(event.x / 50) * 50
+        y = floor(event.y / 50) * 50
+        cell((x, y))
 #-------------------------------------------------------------------------------
-    def step(self):
-        if cell
+    
 #===============================================================================
 
 
 myapp = map()
-myapp.listenMouseEvent('click', map)
+
 myapp.run()
