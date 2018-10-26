@@ -58,7 +58,7 @@ class map(App):
         y = floor(event.y / 50) * 50
         if x < 500 and y < 500:
             cell((x, y))
-            quantity = {x, y}
+            quantity = {x: y}
             print(quantity)
         
 #-------------------------------------------------------------------------------
