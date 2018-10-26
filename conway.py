@@ -9,6 +9,7 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 #===============================================================================
 from ggame import *
 from math import floor
+
 #===============================================================================
 #Colors and Lines
 black = Color(0, 1)
@@ -16,10 +17,10 @@ white = Color(0xffffff, 1)
 grey = Color(0xC0C0C0, 1)
 noline = LineStyle(1, grey)
 
-grid = RectangleAsset(500, 500, noline, white)
-grid = Sprite(grid, (0,0))
+Grid = RectangleAsset(500, 500, noline, white)
+Grid = Sprite(Grid, (0,0))
 
-quantity = 10
+
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
@@ -42,6 +43,7 @@ def row(x):
 class map(App):
     def __init__(self):
         super().__init__()
+        quantity = {}
         grid = RectangleAsset(500, 500, noline, white)
         grid = Sprite(grid, (0,0))
         x = 0
@@ -51,14 +53,17 @@ class map(App):
         map.listenMouseEvent('click', self.mouseClick)
 #-------------------------------------------------------------------------------
     def mouseClick(self, event):
+        quantity = {}
         x = floor(event.x / 50) * 50
         y = floor(event.y / 50) * 50
-        cell((x, y))
+        if x < 500 and y < 500:
+            cell((x, y))
+            quantity = {x, y}
+            print(quantity)
+        
 #-------------------------------------------------------------------------------
-    
 #===============================================================================
 
 
 myapp = map()
-
 myapp.run()
