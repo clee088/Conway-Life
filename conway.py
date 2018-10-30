@@ -43,7 +43,7 @@ def row(x):
 class map(App):
     def __init__(self):
         super().__init__()
-        quantity = {}
+        
         grid = RectangleAsset(500, 500, noline, white)
         grid = Sprite(grid, (0,0))
         x = 0
@@ -52,16 +52,27 @@ class map(App):
             x += 50
         map.listenMouseEvent('click', self.mouseClick)
 #-------------------------------------------------------------------------------
+    def step(self):
+        if run = True:
+            if coord[(x, y)] == 0:
+                cell((x + 50, y + 50))
+            else:
+                cell((x, y))
+#-------------------------------------------------------------------------------
+            
     def mouseClick(self, event):
-        quantity = {}
+        coord = {}
         x = floor(event.x / 50) * 50
         y = floor(event.y / 50) * 50
         if x < 500 and x >= 0 and y < 500 and y >= 0:
             cell((x, y))
-            quantity = {x: y}
-            print(quantity)
-        
-#-------------------------------------------------------------------------------
+            coord = {x: y}
+            print(coord)
+    
+    def spacePress(self, event):
+        run == True
+        if run == True
+            run = False
 #===============================================================================
 
 
