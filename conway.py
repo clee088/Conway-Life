@@ -18,6 +18,7 @@ grey = Color(0xC0C0C0, 1)
 noline = LineStyle(1, grey)
 blackline = LineStyle(1, black)
 coolcolor = Color(0x00DCDF, 1)
+red = Color(0xFF0000, 1)
 
 Grid = RectangleAsset(500, 500, noline, white)
 Grid = Sprite(Grid, (0,0))
@@ -31,12 +32,12 @@ class grid(Sprite):
         
 class cell(Sprite):
     def __init__(self, position):
-        cc = RectangleAsset(50, 50, noline, black)
+        cc = RectangleAsset(50, 50, noline, red)
         super().__init__(cc, position)
         self.visible = False
 class alivecell(Sprite):
     def __init__(self, position):
-        ac = RectangleAsset(50, 50, noline, coolcolor)
+        ac = RectangleAsset(50, 50, noline, black)
         super().__init__(ac, position)
         self.visible = False
         
@@ -71,10 +72,10 @@ class map(App):
         x = floor(event.x / 50) * 50
         y = floor(event.y / 50) * 50
         coord = (x, y)
-        if alivecell(coord).visible == False:
-            alivecell(coord).visible = True
-        else:
-            alivecell(coord).visible = False
+        if x >= 0 and y >= 0 and x < 500 and y < 500:
+            if alivecell(coord).visible == False:
+                alivecell(coord).visible = True
+        
         
     #def spacePress(self, event):
         
