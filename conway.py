@@ -23,7 +23,8 @@ red = Color(0xFF0000, 1)
 Grid = RectangleAsset(500, 500, noline, white)
 Grid = Sprite(Grid, (0,0))
 
-run = False
+alive = ()
+dead = ()
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
@@ -32,7 +33,7 @@ class grid(Sprite):
         
 class cell(Sprite):
     def __init__(self, position):
-        cc = RectangleAsset(50, 50, noline, red)
+        cc = RectangleAsset(50, 50, noline, black)
         super().__init__(cc, position)
         self.visible = False
 class alivecell(Sprite):
@@ -40,7 +41,7 @@ class alivecell(Sprite):
         ac = RectangleAsset(50, 50, noline, black)
         super().__init__(ac, position)
         self.visible = False
-        
+
 #===============================================================================
 def row(x):
     xx = x
@@ -54,31 +55,38 @@ def row(x):
 class map(App):
     def __init__(self):
         super().__init__()
+        self.go = False
         grid = RectangleAsset(500, 500, noline, white)
         grid = Sprite(grid, (0,0))
         x = 0
         for i in range(10):
             row(x)
             x += 50
-        map.listenMouseEvent('click', self.mouseClick)
-        #map.listenKeyEvent('keydown', 'space', self.spacePress)
-#-------------------------------------------------------------------------------
-    #def step(self):
+        map.listenKeyEvent('keydown', 'space', self.space)
+        map.listenMouseEvent('click', self.mouse)
         
+#-------------------------------------------------------------------------------
+    def step(self):
+        if self.go == True:
+            print('hi')
         
 #-------------------------------------------------------------------------------
             
-    def mouseClick(self, event):
-        x = floor(event.x / 50) * 50
-        y = floor(event.y / 50) * 50
-        coord = (x, y)
-        if x >= 0 and y >= 0 and x < 500 and y < 500:
-            if alivecell(coord).visible == False:
-                alivecell(coord).visible = True
+    def mouse(self, event):
+        if self.go == False:
+            x = floor(event.x / 50) * 50
+            y = floor(event.y / 50) * 50
+            coord = (x, y)
+            if x >= 0 and y >= 0 and x < 500 and y < 500:
+                if cell(coord).visible == False:
+                    cell(coord).visible = True
         
-        
-    #def spacePress(self, event):
-        
+    def space(self, event):
+        self.go = not self.go
+        if self.go == True:
+           print('Running...')
+        elif self.go == False:
+            print('Stopping...')
 #===============================================================================
 
 
