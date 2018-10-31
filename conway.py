@@ -22,7 +22,6 @@ red = Color(0xFF0000, 1)
 
 Grid = RectangleAsset(500, 500, noline, white)
 Grid = Sprite(Grid, (0,0))
-
 alive = {}
 dead = {}
 #===============================================================================
@@ -38,7 +37,7 @@ class cell(Sprite):
         self.visible = False
 class deadcell(Sprite):
     def __init__(self, position):
-        ac = RectangleAsset(50, 50, noline, black)
+        ac = RectangleAsset(50, 50, noline, red)
         super().__init__(ac, position)
         self.visible = False
 
@@ -68,11 +67,12 @@ class map(App):
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
-            for c in range(10):
+            print(alive)
+            '''for c in range(10):
                 for c in range(10):
                     if alive == 1:
                         deadcell(coord).visible = True
-        
+            '''
 #-------------------------------------------------------------------------------
             
     def mouse(self, event):
@@ -83,7 +83,7 @@ class map(App):
             if x >= 0 and y >= 0 and x < 500 and y < 500:
                 if cell(coord).visible == False:
                     cell(coord).visible = True
-                    alive['ac'] = cell(coord).position
+                    alive[coord] = cell(coord).position
 #-------------------------------------------------------------------------------
     def space(self, event):
         self.go = not self.go
