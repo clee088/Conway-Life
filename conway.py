@@ -23,8 +23,8 @@ red = Color(0xFF0000, 1)
 Grid = RectangleAsset(500, 500, noline, white)
 Grid = Sprite(Grid, (0,0))
 
-alive = ()
-dead = ()
+alive = {}
+dead = {}
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
@@ -36,7 +36,7 @@ class cell(Sprite):
         cc = RectangleAsset(50, 50, noline, black)
         super().__init__(cc, position)
         self.visible = False
-class alivecell(Sprite):
+class deadcell(Sprite):
     def __init__(self, position):
         ac = RectangleAsset(50, 50, noline, black)
         super().__init__(ac, position)
@@ -49,7 +49,7 @@ def row(x):
     for i in range(10):
         grid((xx, y))
         cell((xx, y))
-        alivecell((xx, y))
+        deadcell((xx, y))
         y += 50
 #===============================================================================
 class map(App):
@@ -68,7 +68,10 @@ class map(App):
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
-            print('hi')
+            for c in range(10):
+                for c in range(10):
+                    if alive == 1:
+                        deadcell(coord).visible = True
         
 #-------------------------------------------------------------------------------
             
@@ -80,11 +83,12 @@ class map(App):
             if x >= 0 and y >= 0 and x < 500 and y < 500:
                 if cell(coord).visible == False:
                     cell(coord).visible = True
-        
+                    alive['ac'] = cell(coord).position
+#-------------------------------------------------------------------------------
     def space(self, event):
         self.go = not self.go
         if self.go == True:
-           print('Running...')
+            print('Running...')
         elif self.go == False:
             print('Stopping...')
 #===============================================================================
