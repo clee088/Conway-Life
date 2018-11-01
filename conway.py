@@ -20,8 +20,7 @@ blackline = LineStyle(1, black)
 coolcolor = Color(0x00DCDF, 1)
 red = Color(0xFF0000, 1)
 
-Grid = RectangleAsset(500, 500, noline, white)
-Grid = Sprite(Grid, (0,0))
+
 alive = {}
 dead = {}
 #===============================================================================
@@ -55,8 +54,14 @@ class map(App):
     def __init__(self):
         super().__init__()
         self.go = False
-        grid = RectangleAsset(500, 500, noline, white)
-        grid = Sprite(grid, (0,0))
+        print('''RULES: 
+1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+
+2. Any live cell with two or three live neighbors lives on to the next generation.
+
+3. Any live cell with more than three live neighbors dies, as if by overpopulation.
+
+4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.''')
         x = 0
         for i in range(10):
             row(x)
@@ -67,12 +72,11 @@ class map(App):
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
-            
+            print('testing')
             '''for c in range(10):
                 for c in range(10):
-                    if alive == 1:
-                        deadcell(coord).visible = True
-            '''
+                    if'''
+            
 #-------------------------------------------------------------------------------
             
     def mouse(self, event):
