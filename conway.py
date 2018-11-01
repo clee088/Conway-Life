@@ -9,8 +9,6 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 #===============================================================================
 from ggame import *
 from math import floor
-frameWidth = 1600
-frameHeight = 1600
 #===============================================================================
 #Colors and Lines
 black = Color(0, 1)
@@ -27,6 +25,8 @@ greenline = LineStyle(1, lightgreen)
 c = {}
 ac = {}
 gridnumber = int(input('How many grid cells? '))
+frameWidth = gridnumber * 100
+frameHeight = gridnumber * 100
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
