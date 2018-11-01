@@ -24,7 +24,10 @@ blackline = LineStyle(1, black)
 greenline = LineStyle(1, lightgreen)
 c = {}
 ac = {}
-gridnumber = int(input('How many grid cells? '))
+#=======================IMPORTANT============================
+'''gridnumber is the number of cells that there are for each row
+Recommended is 20. Max is 30 before program starts to slow'''
+gridnumber = 20
 frameWidth = gridnumber * 100
 frameHeight = gridnumber * 100
 #===============================================================================
@@ -51,12 +54,9 @@ def row(x):
         cell((xx, y))
         deadcell((xx, y))
         y += 50
-#===============================================================================
-class map(App):
-    def __init__(self, width, height):
-        super().__init__(width, height)
-        self.go = False
-        print('''RULES: 
+#-------------------------------------------------------------------------------
+def rules():
+    print('''RULES: 
 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
 
 2. Any live cell with two or three live neighbors lives on to the next generation.
@@ -64,6 +64,12 @@ class map(App):
 3. Any live cell with more than three live neighbors dies, as if by overpopulation.
 
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.''')
+#===============================================================================
+class map(App):
+    def __init__(self, width, height):
+        super().__init__(width, height)
+        self.go = False
+        rules()
         x = 0
         for i in range(gridnumber):
             row(x)
