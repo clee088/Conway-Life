@@ -17,10 +17,11 @@ grey = Color(0x2E2E2E, 1)
 lightgrey = Color(0x767676, 1)
 red = Color(0xFF0000, 1)
 green = Color(0x20CF00, 1)
+pink = Color(0xFF0097, 1)
 lightgreen = Color(0x27FF00, 1)
-coolcolor = Color(0x00DCDF, 1)
-noline = LineStyle(1, grey)
-blackline = LineStyle(1, black)
+blue = Color(0x00BDFF, 1)
+line = LineStyle(1, white)
+blackline = LineStyle(0.1, black)
 greenline = LineStyle(1, lightgreen)
 c = {}
 ac = {}
@@ -28,20 +29,20 @@ ac = {}
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
 gridnumber = 20
-frameWidth = gridnumber * 100
-frameHeight = gridnumber * 100
+ScreenWidth = gridnumber * 100
+ScreenHeight = gridnumber * 100
 #===============================================================================
 class grid(Sprite):
-    g = RectangleAsset(50, 50, noline, black)
+    g = RectangleAsset(50, 50, blackline, white)
     def __init__(self, position):
         super().__init__(grid.g, position)
 class cell(Sprite):
-    cc = RectangleAsset(50, 50, greenline, green)
+    cc = RectangleAsset(50, 50, blackline, blue)
     def __init__(self, position):
         super().__init__(cell.cc, position)
         self.visible = False
 class deadcell(Sprite):
-    dc = RectangleAsset(50, 50, noline, lightgrey)
+    dc = RectangleAsset(50, 50, blackline, pink)
     def __init__(self, position):
         super().__init__(deadcell.dc, position)
         self.visible = False
@@ -109,5 +110,5 @@ class map(App):
         elif self.go == False:
             print('Stopping...')
 #===============================================================================
-myapp = map(frameWidth, frameHeight)
+myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
