@@ -42,7 +42,7 @@ class deadcell(Sprite):
 def row(x):
     xx = x
     y = 0
-    for i in range(20):
+    for i in range(10):
         grid((xx, y))
         cell((xx, y))
         deadcell((xx, y))
@@ -61,7 +61,7 @@ class map(App):
 
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.''')
         x = 0
-        for i in range(20):
+        for i in range(10):
             row(x)
             x += 50
         map.listenKeyEvent('keydown', 'space', self.space)
