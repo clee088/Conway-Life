@@ -21,14 +21,13 @@ coolcolor = Color(0x00DCDF, 1)
 noline = LineStyle(1, grey)
 blackline = LineStyle(1, black)
 greenline = LineStyle(1, lightgreen)
-alive = {}
-dead = {}
+c = {}
+ac = {}
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
         g = RectangleAsset(50, 50, noline, black)
         super().__init__(g, position)
-        
 class cell(Sprite):
     def __init__(self, position):
         cc = RectangleAsset(50, 50, greenline, green)
@@ -43,7 +42,7 @@ class deadcell(Sprite):
 def row(x):
     xx = x
     y = 0
-    for i in range(10):
+    for i in range(20):
         grid((xx, y))
         cell((xx, y))
         deadcell((xx, y))
@@ -62,7 +61,7 @@ class map(App):
 
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.''')
         x = 0
-        for i in range(10):
+        for i in range(20):
             row(x)
             x += 50
         map.listenKeyEvent('keydown', 'space', self.space)
@@ -70,8 +69,14 @@ class map(App):
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
-            print('testing')
-                
+            for coord in c:
+                if c[coord] == 'a':
+                    c[coord] = 'd'
+                    deadcell(coord).visible = True
+                    cell(coord).visible = False
+            print(c)
+            self.go = False
+            print('Stopping...')
 #-------------------------------------------------------------------------------
     def mouse(self, event):
         if self.go == False:
@@ -79,9 +84,13 @@ class map(App):
             y = floor(event.y / 50) * 50
             coord = (x, y)
             if x >= 0 and y >= 0 and x < 500 and y < 500:
-                if cell(coord).visible == False:
+                c[coord] = 'p'
+                if c[coord] == 'a':
+                    c[coord] = 'd'
+                    cell(coord).visible = False
+                else:
+                    c[coord] = 'a'
                     cell(coord).visible = True
-                    alive[coord] = cell(coord).position
 #-------------------------------------------------------------------------------
     def space(self, event):
         self.go = not self.go
