@@ -32,18 +32,18 @@ frameWidth = gridnumber * 100
 frameHeight = gridnumber * 100
 #===============================================================================
 class grid(Sprite):
+    g = RectangleAsset(50, 50, noline, black)
     def __init__(self, position):
-        g = RectangleAsset(50, 50, noline, black)
-        super().__init__(g, position)
+        super().__init__(grid.g, position)
 class cell(Sprite):
+    cc = RectangleAsset(50, 50, greenline, green)
     def __init__(self, position):
-        cc = RectangleAsset(50, 50, greenline, green)
-        super().__init__(cc, position)
+        super().__init__(cell.cc, position)
         self.visible = False
 class deadcell(Sprite):
+    dc = RectangleAsset(50, 50, noline, lightgrey)
     def __init__(self, position):
-        ac = RectangleAsset(50, 50, noline, lightgrey)
-        super().__init__(ac, position)
+        super().__init__(deadcell.dc, position)
         self.visible = False
 #===============================================================================
 def row(x):
@@ -100,6 +100,7 @@ class map(App):
                 else:
                     c[coord] = 'a'
                     cell(coord).visible = True
+                print(c)
 #-------------------------------------------------------------------------------
     def r(self, event):
         self.go = not self.go
