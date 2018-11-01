@@ -14,11 +14,14 @@ from math import floor
 #Colors and Lines
 black = Color(0, 1)
 white = Color(0xffffff, 1)
-grey = Color(0xC0C0C0, 1)
+grey = Color(0x2E2E2E, 1)
+red = Color(0xFF0000, 1)
+green = Color(0x20CF00, 1)
+lightgreen = Color(0x27FF00, 1)
+coolcolor = Color(0x00DCDF, 1)
 noline = LineStyle(1, grey)
 blackline = LineStyle(1, black)
-coolcolor = Color(0x00DCDF, 1)
-red = Color(0xFF0000, 1)
+greenline = LineStyle(1, lightgreen)
 
 
 alive = {}
@@ -26,17 +29,17 @@ dead = {}
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
-        g = RectangleAsset(50, 50, noline, white)
+        g = RectangleAsset(50, 50, noline, black)
         super().__init__(g, position)
         
 class cell(Sprite):
     def __init__(self, position):
-        cc = RectangleAsset(50, 50, noline, black)
+        cc = RectangleAsset(50, 50, greenline, green)
         super().__init__(cc, position)
         self.visible = False
 class deadcell(Sprite):
     def __init__(self, position):
-        ac = RectangleAsset(50, 50, noline, red)
+        ac = RectangleAsset(50, 50, noline, grey)
         super().__init__(ac, position)
         self.visible = False
 
