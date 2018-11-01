@@ -9,6 +9,8 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 #===============================================================================
 from ggame import *
 from math import floor
+frameWidth = 1600
+frameHeight = 1600
 #===============================================================================
 #Colors and Lines
 black = Color(0, 1)
@@ -51,8 +53,8 @@ def row(x):
         y += 50
 #===============================================================================
 class map(App):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, width, height):
+        super().__init__(width, height)
         self.go = False
         print('''RULES: 
 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
@@ -66,7 +68,7 @@ class map(App):
         for i in range(gridnumber):
             row(x)
             x += 50
-        map.listenKeyEvent('keydown', 'space', self.space)
+        map.listenKeyEvent('keydown', 'r', self.r)
         map.listenMouseEvent('click', self.mouse)
 #-------------------------------------------------------------------------------
     def step(self):
@@ -76,7 +78,6 @@ class map(App):
                     c[coord] = 'd'
                     deadcell(coord).visible = True
                     cell(coord).visible = False
-            print(c)
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
@@ -94,12 +95,12 @@ class map(App):
                     c[coord] = 'a'
                     cell(coord).visible = True
 #-------------------------------------------------------------------------------
-    def space(self, event):
+    def r(self, event):
         self.go = not self.go
         if self.go == True:
             print('Running...')
         elif self.go == False:
             print('Stopping...')
 #===============================================================================
-myapp = map()
+myapp = map(frameWidth, frameHeight)
 myapp.run()
