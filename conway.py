@@ -14,6 +14,7 @@ from math import floor
 black = Color(0, 1)
 white = Color(0xffffff, 1)
 grey = Color(0x2E2E2E, 1)
+lightgrey = Color(0x767676, 1)
 red = Color(0xFF0000, 1)
 green = Color(0x20CF00, 1)
 lightgreen = Color(0x27FF00, 1)
@@ -23,6 +24,7 @@ blackline = LineStyle(1, black)
 greenline = LineStyle(1, lightgreen)
 c = {}
 ac = {}
+gridnumber = int(input('How many grid cells? '))
 #===============================================================================
 class grid(Sprite):
     def __init__(self, position):
@@ -35,14 +37,14 @@ class cell(Sprite):
         self.visible = False
 class deadcell(Sprite):
     def __init__(self, position):
-        ac = RectangleAsset(50, 50, noline, grey)
+        ac = RectangleAsset(50, 50, noline, lightgrey)
         super().__init__(ac, position)
         self.visible = False
 #===============================================================================
 def row(x):
     xx = x
     y = 0
-    for i in range(10):
+    for i in range(gridnumber):
         grid((xx, y))
         cell((xx, y))
         deadcell((xx, y))
@@ -61,7 +63,7 @@ class map(App):
 
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.''')
         x = 0
-        for i in range(10):
+        for i in range(gridnumber):
             row(x)
             x += 50
         map.listenKeyEvent('keydown', 'space', self.space)
@@ -83,7 +85,7 @@ class map(App):
             x = floor(event.x / 50) * 50
             y = floor(event.y / 50) * 50
             coord = (x, y)
-            if x >= 0 and y >= 0 and x < 500 and y < 500:
+            if x >= 0 and y >= 0 and x < gridnumber * 50 and y < gridnumber * 50:
                 c[coord] = 'p'
                 if c[coord] == 'a':
                     c[coord] = 'd'
