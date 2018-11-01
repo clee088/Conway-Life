@@ -9,7 +9,6 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 #===============================================================================
 from ggame import *
 from math import floor
-
 #===============================================================================
 #Colors and Lines
 black = Color(0, 1)
@@ -22,8 +21,6 @@ coolcolor = Color(0x00DCDF, 1)
 noline = LineStyle(1, grey)
 blackline = LineStyle(1, black)
 greenline = LineStyle(1, lightgreen)
-
-
 alive = {}
 dead = {}
 #===============================================================================
@@ -42,7 +39,6 @@ class deadcell(Sprite):
         ac = RectangleAsset(50, 50, noline, grey)
         super().__init__(ac, position)
         self.visible = False
-
 #===============================================================================
 def row(x):
     xx = x
@@ -71,17 +67,12 @@ class map(App):
             x += 50
         map.listenKeyEvent('keydown', 'space', self.space)
         map.listenMouseEvent('click', self.mouse)
-        
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
             print('testing')
-            '''for c in range(10):
-                for c in range(10):
-                    if'''
-            
+                
 #-------------------------------------------------------------------------------
-            
     def mouse(self, event):
         if self.go == False:
             x = floor(event.x / 50) * 50
@@ -91,7 +82,6 @@ class map(App):
                 if cell(coord).visible == False:
                     cell(coord).visible = True
                     alive[coord] = cell(coord).position
-                    print(alive)
 #-------------------------------------------------------------------------------
     def space(self, event):
         self.go = not self.go
@@ -100,7 +90,5 @@ class map(App):
         elif self.go == False:
             print('Stopping...')
 #===============================================================================
-
-
 myapp = map()
 myapp.run()
