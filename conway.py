@@ -67,7 +67,7 @@ class map(App):
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
-            print(alive)
+            
             '''for c in range(10):
                 for c in range(10):
                     if alive == 1:
@@ -84,6 +84,7 @@ class map(App):
                 if cell(coord).visible == False:
                     cell(coord).visible = True
                     alive[coord] = cell(coord).position
+                    print(alive)
 #-------------------------------------------------------------------------------
     def space(self, event):
         self.go = not self.go
