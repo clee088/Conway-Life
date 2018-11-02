@@ -13,19 +13,12 @@ from math import floor
 #Colors and Lines
 black = Color(0, 1)
 white = Color(0xffffff, 1)
-grey = Color(0x2E2E2E, 1)
-lightgrey = Color(0x767676, 1)
-red = Color(0xFF0000, 1)
-green = Color(0x20CF00, 1)
 pink = Color(0xFF0097, 1)
-lightgreen = Color(0x27FF00, 1)
-blue = Color(0x00BDFF, 1)
+blue = Color(0x00B6FF, 1)
 line = LineStyle(1, white)
 blackline = LineStyle(0.1, black)
-greenline = LineStyle(1, lightgreen)
 c = {}
-ac = {}
-#=======================IMPORTANT============================
+#================================IMPORTANT======================================
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
 gridnumber = 20
@@ -77,6 +70,7 @@ class map(App):
             x += 50
         map.listenKeyEvent('keydown', 'r', self.r)
         map.listenMouseEvent('click', self.mouse)
+        map.listenKeyEvent('keydown', 'q', self.q)
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
@@ -101,14 +95,13 @@ class map(App):
                 else:
                     c[coord] = 'a'
                     cell(coord).visible = True
-                print(c)
 #-------------------------------------------------------------------------------
     def r(self, event):
         self.go = not self.go
         if self.go == True:
             print('Running...')
-        elif self.go == False:
-            print('Stopping...')
+    def q(self, event):
+        c.clear()
 #===============================================================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
