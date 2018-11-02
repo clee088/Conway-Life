@@ -79,6 +79,7 @@ class map(App):
                     c[coord] = 'd'
                     deadcell(coord).visible = True
                     cell(coord).visible = False
+            c.clear()
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
@@ -100,6 +101,7 @@ class map(App):
         self.go = not self.go
         if self.go == True:
             print('Running...')
+#-------------------------------------------------------------------------------
     def q(self, event):
         c.clear()
 #===============================================================================
