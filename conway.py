@@ -18,6 +18,8 @@ blue = Color(0x00B6FF, 1)
 line = LineStyle(1, white)
 blackline = LineStyle(0.1, black)
 c = {}
+dc = {}
+ac = {}
 #================================IMPORTANT======================================
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
@@ -70,16 +72,16 @@ class map(App):
             x += 50
         map.listenKeyEvent('keydown', 'r', self.r)
         map.listenMouseEvent('click', self.mouse)
-        map.listenKeyEvent('keydown', 'q', self.q)
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
             for coord in c:
                 if c[coord] == 'a':
                     c[coord] = 'd'
+                    dc[coord] = 'd'
                     deadcell(coord).visible = True
                     cell(coord).visible = False
-            c.clear()
+            print(c)
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
@@ -91,19 +93,18 @@ class map(App):
             if x >= 0 and y >= 0 and x < gridnumber * 50 and y < gridnumber * 50:
                 c[coord] = 'p'
                 if c[coord] == 'a':
+                    print('test')
                     c[coord] = 'd'
                     cell(coord).visible = False
                 else:
                     c[coord] = 'a'
                     cell(coord).visible = True
+                    print(c)
 #-------------------------------------------------------------------------------
     def r(self, event):
         self.go = not self.go
         if self.go == True:
             print('Running...')
-#-------------------------------------------------------------------------------
-    def q(self, event):
-        c.clear()
 #===============================================================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
