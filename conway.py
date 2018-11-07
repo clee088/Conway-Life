@@ -81,7 +81,10 @@ class map(App):
                     dc[coord] = 'd'
                     deadcell(coord).visible = True
                     cell(coord).visible = False
-            print(c)
+                elif dc[coord] == 'd':
+                    deadcell(coord).visible = False
+                    cell(coord).visible = True
+                    c[coord] = 'a'
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
@@ -95,16 +98,19 @@ class map(App):
                 if c[coord] == 'a':
                     print('test')
                     c[coord] = 'd'
-                    cell(coord).visible = False
+                    grid(coord).visible = True
+                    
                 else:
                     c[coord] = 'a'
                     cell(coord).visible = True
-                    print(c)
 #-------------------------------------------------------------------------------
     def r(self, event):
         self.go = not self.go
         if self.go == True:
             print('Running...')
+        else:
+            self.go = False
+            print('Stopping...')
 #===============================================================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
