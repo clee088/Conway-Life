@@ -75,16 +75,21 @@ class map(App):
 #-------------------------------------------------------------------------------
     def step(self):
         if self.go == True:
-            for coord in c:
-                if c[coord] == 'a':
-                    c[coord] = 'd'
-                    dc[coord] = 'd'
-                    deadcell(coord).visible = True
-                    cell(coord).visible = False
-                elif dc[coord] == 'd':
-                    deadcell(coord).visible = False
-                    cell(coord).visible = True
-                    c[coord] = 'a'
+            coordlist = []
+            for (x, y) in c:
+                coordlist.append((x, y))
+            neighbor = []
+            for (x, y) in coordlist:
+                for x in range(x - 50, x + 100):
+                    if x <= ScreenWidth and x >= 0:
+                        for y in range(y - 50, y + 100):
+                            if y <= ScreenHeight and y >= 0:
+                                neighbor.append((x, y))
+            for (x, y) in neighbor:
+                if (x, y) in coordlist:
+                    print('yes')
+
+
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
