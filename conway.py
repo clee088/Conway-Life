@@ -79,15 +79,19 @@ class map(App):
             for (x, y) in c:
                 coordlist.append((x, y))
             neighbor = []
+            print(x, y)
             for (x, y) in coordlist:
-                for x in range(x - 50, x + 100):
+                exist = 0
+                for x in range(x - 50, x + 101):
                     if x <= ScreenWidth and x >= 0:
-                        for y in range(y - 50, y + 100):
+                        for y in range(y - 50, y + 101):
                             if y <= ScreenHeight and y >= 0:
                                 neighbor.append((x, y))
+            print(neighbor)
             for (x, y) in neighbor:
                 if (x, y) in coordlist:
-                    print('yes')
+                    exist += 1
+            print(exist)
 
 
             self.go = False
