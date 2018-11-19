@@ -66,7 +66,8 @@ def rules():
 
 HOW TO PLAY:
 - Click where you want to add a cell to the grid
-- Press R to move to the next generation''')
+- Press R to move to the next generation
+- Press C to reset''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
@@ -79,7 +80,8 @@ class map(App):
             x += 50
         map.listenKeyEvent('keydown', 'r', self.r)
         map.listenMouseEvent('click', self.mouse)
-#-------------------------------------------------------------------------------
+        map.listenKeyEvent('keydown', 'c', self.c)
+#----------------------------------STEP_FUNC------------------------------------
     def step(self):
         if self.go == True:
             coordlist = []
@@ -151,6 +153,13 @@ class map(App):
         else:
             self.go = False
             print('Stopping...')
+#----------------------------------RESET----------------------------------------
+    def c(self, event):
+        x = 0
+        for i in range(gridnumber):
+            row(x)
+            x += 50
+        c.clear()
 #====================================RUN=======================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
