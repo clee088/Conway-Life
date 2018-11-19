@@ -82,17 +82,32 @@ class map(App):
             print(x, y)
             for (x, y) in coordlist:
                 exist = 0
-                for x in range(x - 50, x + 101):
+                for x in range(x - 1, x + 2):
                     if x <= ScreenWidth and x >= 0:
-                        for y in range(y - 50, y + 101):
+                        for y in range(y - 1, y + 2):
                             if y <= ScreenHeight and y >= 0:
                                 neighbor.append((x, y))
-            print(neighbor)
-            for (x, y) in neighbor:
-                if (x, y) in coordlist:
-                    exist += 1
-            print(exist)
-
+                for (x, y) in neighbor:
+                    if (x, y) in coordlist:
+                        exist += 1
+                print(exist)
+                if exist == 4:
+                    (x, y) = coord
+                    c[coord] = 'da'
+                elif exist == 3 or x == 4:
+                    (x, y) = coord
+                    c[coord] = 'a'
+                else:
+                    (x, y) = coord
+                    c[coord] = 'd'
+                    
+            for coord in c:
+                if c[coord] == 'a':
+                    cell(coord).visible = True
+                elif c[coord] == 'd':
+                    deadcell(coord).visible = True
+                elif c[coord] == 'da':
+                    cell(coord).visible = True
 
             self.go = False
             print('Stopping...')
