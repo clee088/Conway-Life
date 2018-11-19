@@ -90,23 +90,23 @@ class map(App):
                 for (x, y) in neighbor:
                     if (x, y) in coordlist:
                         exist += 1
-                print(exist)
+            
                 if exist == 4:
-                    (x, y) = coord
-                    c[coord] = 'da'
+                    #(x, y) = coord
+                    c[(x, y)] = 'da'
                 elif exist == 3 or x == 4:
-                    (x, y) = coord
-                    c[coord] = 'a'
+                    #(x, y) = coord
+                    c[(x, y)] = 'a'
                 else:
-                    (x, y) = coord
-                    c[coord] = 'd'
-                    
+                    #(x, y) = coord
+                    c[(x, y)] = 'd'
+            print(c)
             for coord in c:
-                if c[coord] == 'a':
+                if c[(x, y)] == 'a':
                     cell(coord).visible = True
-                elif c[coord] == 'd':
+                elif c[(x, y)] == 'd':
                     deadcell(coord).visible = True
-                elif c[coord] == 'da':
+                elif c[(x, y)] == 'da':
                     cell(coord).visible = True
 
             self.go = False
