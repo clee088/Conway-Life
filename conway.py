@@ -153,8 +153,9 @@ class map(App):
         else:
             self.go = False
             print('Stopping...')
-#----------------------------------RESET----------------------------------------
+#----------------------------------CLEAR----------------------------------------
     def c(self, event):
+        print('Clearing...')
         x = 0
         for i in range(gridnumber):
             row(x)
