@@ -90,15 +90,17 @@ class map(App):
                 for (x, y) in neighbor:
                     if (x, y) in coordlist:
                         exist += 1
-            
                 if exist == 4:
-                    #(x, y) = coord
+                    x -= 1
+                    y -= 3
                     c[(x, y)] = 'da'
                 elif exist == 3 or x == 4:
-                    #(x, y) = coord
+                    x -= 1
+                    y -= 3
                     c[(x, y)] = 'a'
                 else:
-                    #(x, y) = coord
+                    x -= 1
+                    y -= 3
                     c[(x, y)] = 'd'
             print(c)
             for coord in c:
