@@ -67,7 +67,7 @@ def rules():
 HOW TO PLAY:
 - Click where you want to add a cell to the grid
 - Press R to move to the next generation
-- Press C to reset''')
+- Press C to reset / clear the grid''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
