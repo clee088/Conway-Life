@@ -109,8 +109,12 @@ class map(App):
                 elif c[(x, y)] == 'd':
                     deadcell(coord).visible = True
                 elif c[(x, y)] == 'da':
+                    c[(x, y)] = 'a'
                     cell(coord).visible = True
-
+            #print(exist)
+            neighbor = []
+            exist = 0
+            print(neighbor)
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
