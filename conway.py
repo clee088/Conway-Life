@@ -79,9 +79,10 @@ class map(App):
             for (x, y) in c:
                 coordlist.append((x, y))
             neighbor = []
-            print(x, y)
+            #print(x, y)
             for (x, y) in coordlist:
                 exist = 0
+                #neighbor = []
                 for x in range(x - 1, x + 2):
                     if x <= ScreenWidth and x >= 0:
                         for y in range(y - 1, y + 2):
@@ -90,6 +91,8 @@ class map(App):
                 for (x, y) in neighbor:
                     if (x, y) in coordlist:
                         exist += 1
+                        #print(exist)
+                        #print(neighbor)
                 if exist == 4:
                     x -= 1
                     y -= 3
@@ -102,7 +105,7 @@ class map(App):
                     x -= 1
                     y -= 3
                     c[(x, y)] = 'd'
-            print(c)
+            #print(c)
             for coord in c:
                 if c[(x, y)] == 'a':
                     cell(coord).visible = True
@@ -112,9 +115,10 @@ class map(App):
                     c[(x, y)] = 'a'
                     cell(coord).visible = True
             #print(exist)
-            neighbor = []
-            exist = 0
-            print(neighbor)
+            #neighbor = []
+            #exist = 0
+            #print(c)
+            #print(neighbor)
             self.go = False
             print('Stopping...')
 #-------------------------------------------------------------------------------
