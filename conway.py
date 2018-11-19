@@ -6,11 +6,10 @@ Assignment:
 Write and submit a program that plays Conway's Game of Life, per 
 https://github.com/HHS-IntroProgramming/Conway-Life
 """
-#===============================================================================
+#==================================IMPORTS======================================
 from ggame import *
 from math import floor
-#===============================================================================
-#Colors and Lines
+#==============================COLORS_AND_LINES=================================
 black = Color(0, 1)
 white = Color(0xffffff, 1)
 pink = Color(0xFF0097, 1)
@@ -26,14 +25,15 @@ gridnumber = int(input('''How many cells would you like each row to have?
 Recommended is 20 cells.
 Max is 30 cells before program starts to slow.
 '''))
-
+#Scales screen based on gridnumber
 ScreenWidth = gridnumber * 100
 ScreenHeight = gridnumber * 100
-#===============================================================================
+#=================================CLASSES=======================================
 class grid(Sprite):
     g = RectangleAsset(50, 50, blackline, white)
     def __init__(self, position):
         super().__init__(grid.g, position)
+        self.visible = True
 class cell(Sprite):
     cc = RectangleAsset(50, 50, blackline, blue)
     def __init__(self, position):
@@ -44,7 +44,7 @@ class deadcell(Sprite):
     def __init__(self, position):
         super().__init__(deadcell.dc, position)
         self.visible = False
-#===============================================================================
+#================================CREATES GRID===================================
 def row(x):
     xx = x
     y = 0
@@ -53,7 +53,7 @@ def row(x):
         cell((xx, y))
         deadcell((xx, y))
         y += 50
-#-------------------------------------------------------------------------------
+#----------------------------------RULES----------------------------------------
 def rules():
     print('''RULES: 
 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
@@ -62,8 +62,12 @@ def rules():
 
 3. Any live cell with more than three live neighbors dies, as if by overpopulation.
 
-4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.''')
-#===============================================================================
+4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+HOW TO PLAY:
+- Click where you want to add a cell to the grid
+- Press R to move to the next generation''')
+#==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
         super().__init__(width, height)
@@ -124,7 +128,7 @@ class map(App):
             #print(neighbor)
             self.go = False
             print('Stopping...')
-#-------------------------------------------------------------------------------
+#-------------------------------MOUSE_CLICK-------------------------------------
     def mouse(self, event):
         if self.go == False:
             x = floor(event.x / 50) * 50
@@ -139,7 +143,7 @@ class map(App):
                 else:
                     c[coord] = 'a'
                     cell(coord).visible = True
-#-------------------------------------------------------------------------------
+#-----------------------------MOVE_TO_NEXT_GEN----------------------------------
     def r(self, event):
         self.go = not self.go
         if self.go == True:
@@ -147,6 +151,6 @@ class map(App):
         else:
             self.go = False
             print('Stopping...')
-#===============================================================================
+#====================================RUN=======================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
