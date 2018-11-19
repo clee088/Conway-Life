@@ -87,26 +87,30 @@ class map(App):
             coordlist = []
             for (x, y) in c:
                 coordlist.append((x, y))
-            neighbor = []
+            #neighbor = []
             #print(x, y)
+            exist = 0
             for (x, y) in coordlist:
-                exist = 0
-                #neighbor = []
+                #exist = 0
+                neighbor = []
                 for x in range(x - 1, x + 2):
                     if x <= ScreenWidth and x >= 0:
                         for y in range(y - 1, y + 2):
                             if y <= ScreenHeight and y >= 0:
                                 neighbor.append((x, y))
+                print(neighbor)
                 for (x, y) in neighbor:
                     if (x, y) in coordlist:
                         exist += 1
-                        #print(exist)
+                        print(exist)
                         #print(neighbor)
-                if exist == 4:
+                        print(x)
+                        print(y)
+                if exist == 3:
                     x -= 1
                     y -= 3
                     c[(x, y)] = 'da'
-                elif exist == 3 or x == 4:
+                elif exist == 2 or x == 3:
                     x -= 1
                     y -= 3
                     c[(x, y)] = 'a'
