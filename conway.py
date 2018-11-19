@@ -18,12 +18,15 @@ blue = Color(0x00B6FF, 1)
 line = LineStyle(1, white)
 blackline = LineStyle(0.1, black)
 c = {}
-dc = {}
-ac = {}
 #================================IMPORTANT======================================
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
-gridnumber = 20
+#gridnumber = 20
+gridnumber = int(input('''How many cells would you like each row to have?
+Recommended is 20 cells.
+Max is 30 cells before program starts to slow.
+'''))
+
 ScreenWidth = gridnumber * 100
 ScreenHeight = gridnumber * 100
 #===============================================================================
@@ -133,7 +136,6 @@ class map(App):
                     print('test')
                     c[coord] = 'd'
                     grid(coord).visible = True
-                    
                 else:
                     c[coord] = 'a'
                     cell(coord).visible = True
