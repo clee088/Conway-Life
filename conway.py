@@ -106,11 +106,11 @@ class map(App):
                         #print(neighbor)
                         print(x)
                         print(y)
-                if exist == 3:
+                if exist == 4:
                     x -= 1
                     y -= 3
                     c[(x, y)] = 'da'
-                elif exist == 2 or x == 3:
+                elif exist == 3 or x == 4:
                     x -= 1
                     y -= 3
                     c[(x, y)] = 'a'
