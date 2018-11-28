@@ -87,10 +87,14 @@ class map(App):
             coordlist = []
             for (xc, yc) in c:
                 coordlist.append((xc, yc))
-            #neighbor = []
-            #print(x, y)
-            #exist = 0
+            check = []
             for (xc, yc) in coordlist:
+                for x in range(xc - 50, xc + 100, 50):
+                    if x <= ScreenWidth and x >= 0:
+                        for y in range(yc - 50, yc + 100, 50):
+                            if y <= ScreenHeight and y >= 0 and (x, y) not in check:
+                                check.append((x, y))
+            for (xc, yc) in check:
                 exist = 0
                 neighbor = []
                 for x in range(xc - 50, xc + 100, 50):
@@ -98,29 +102,31 @@ class map(App):
                         for y in range(yc - 50, yc + 100, 50):
                             if y <= ScreenHeight and y >= 0:
                                 neighbor.append((x, y))
+                #removes coord so it's not counting itself
                 neighbor.remove((xc, yc))
-                print(neighbor)
                 for (xcoord, ycoord) in neighbor:
                     if (xcoord, ycoord) in coordlist:
                         exist += 1
-                        print(exist)
-                print(xc, yc)
                 if exist == 3 and (xc, yc) not in coordlist:
                     c[(xc, yc)] = 'da'
+                    cell((xc, yc)).visible = True
                 elif (xc, yc) in coordlist:
                     if exist == 2 or exist == 3:
                         c[(xc, yc)] = 'a'
+                        cell((xc, yc)).visible = True
                     else:
                         c[(xc, yc)] = 'd'
-            #print(c)
+                        grid((xc, yc)).visible = True
+            '''
             for coord in c:
-                if c[(xc, yc)] == 'a':
+                if c[(x, y)] == 'a':
                     cell(coord).visible = True
-                elif c[(xc, yc)] == 'd':
-                    deadcell(coord).visible = True
-                elif c[(xc, yc)] == 'da':
-                    c[(xc, yc)] = 'a'
+                elif c[(x, y)] == 'd':
+                    grid(coord).visible = True
+                elif c[(x, y)] == 'da':
+                    c[(x, y)] = 'a'
                     cell(coord).visible = True
+            '''
             self.go = False
             print('Stopping...')
 #-------------------------------MOUSE_CLICK-------------------------------------
