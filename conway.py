@@ -85,53 +85,42 @@ class map(App):
     def step(self):
         if self.go == True:
             coordlist = []
-            for (x, y) in c:
-                coordlist.append((x, y))
+            for (xc, yc) in c:
+                coordlist.append((xc, yc))
             #neighbor = []
             #print(x, y)
-            exist = 0
-            for (x, y) in coordlist:
-                #exist = 0
+            #exist = 0
+            for (xc, yc) in coordlist:
+                exist = 0
                 neighbor = []
-                for x in range(x - 1, x + 2):
+                for x in range(xc - 50, xc + 100, 50):
                     if x <= ScreenWidth and x >= 0:
-                        for y in range(y - 1, y + 2):
+                        for y in range(yc - 50, yc + 100, 50):
                             if y <= ScreenHeight and y >= 0:
                                 neighbor.append((x, y))
+                neighbor.remove((xc, yc))
                 print(neighbor)
-                for (x, y) in neighbor:
-                    if (x, y) in coordlist:
+                for (xcoord, ycoord) in neighbor:
+                    if (xcoord, ycoord) in coordlist:
                         exist += 1
                         print(exist)
-                        #print(neighbor)
-                        print(x)
-                        print(y)
-                if exist == 4:
-                    x -= 1
-                    y -= 3
-                    c[(x, y)] = 'da'
-                elif exist == 3 or x == 4:
-                    x -= 1
-                    y -= 3
-                    c[(x, y)] = 'a'
-                else:
-                    x -= 1
-                    y -= 3
-                    c[(x, y)] = 'd'
+                print(xc, yc)
+                if exist == 3 and (xc, yc) not in coordlist:
+                    c[(xc, yc)] = 'da'
+                elif (xc, yc) in coordlist:
+                    if exist == 2 or exist == 3:
+                        c[(xc, yc)] = 'a'
+                    else:
+                        c[(xc, yc)] = 'd'
             #print(c)
             for coord in c:
-                if c[(x, y)] == 'a':
+                if c[(xc, yc)] == 'a':
                     cell(coord).visible = True
-                elif c[(x, y)] == 'd':
+                elif c[(xc, yc)] == 'd':
                     deadcell(coord).visible = True
-                elif c[(x, y)] == 'da':
-                    c[(x, y)] = 'a'
+                elif c[(xc, yc)] == 'da':
+                    c[(xc, yc)] = 'a'
                     cell(coord).visible = True
-            #print(exist)
-            #neighbor = []
-            #exist = 0
-            #print(c)
-            #print(neighbor)
             self.go = False
             print('Stopping...')
 #-------------------------------MOUSE_CLICK-------------------------------------
