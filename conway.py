@@ -17,6 +17,7 @@ blue = Color(0x00B6FF, 1)
 line = LineStyle(1, white)
 blackline = LineStyle(0.1, black)
 c = {}
+cc = []
 #================================IMPORTANT======================================
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
@@ -86,7 +87,7 @@ class map(App):
     def step(self):
         if self.go == True:
             coordlist = []
-            for (xc, yc) in c:
+            for (xc, yc) in cc:
                 coordlist.append((xc, yc))
             check = []
             for (xc, yc) in coordlist:
@@ -109,8 +110,9 @@ class map(App):
                     if (xcoord, ycoord) in coordlist:
                         exist += 1
                 if exist == 3 and (xc, yc) not in coordlist:
-                    c[(xc, yc)] = 'da'
+                    c[(xc, yc)] = 'a'
                     cell((xc, yc)).visible = True
+                    cc.append((xc, yc))
                 elif (xc, yc) in coordlist:
                     if exist == 2 or exist == 3:
                         c[(xc, yc)] = 'a'
@@ -128,6 +130,13 @@ class map(App):
                     c[(x, y)] = 'a'
                     cell(coord).visible = True
             '''
+            print(coordlist)
+            print('')
+            print(check)
+            print('')
+            print(neighbor)
+            print('')
+            print(c)
 #-------------------------------------vvvv--------------------------------------
             self.go = False
 #-------------------------------------^^^^--------------------------------------
@@ -146,6 +155,7 @@ class map(App):
                     grid(coord).visible = True
                 else:
                     c[coord] = 'a'
+                    cc.append(coord)
                     cell(coord).visible = True
 #-----------------------------MOVE_TO_NEXT_GEN----------------------------------
     def r(self, event):
