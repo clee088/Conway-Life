@@ -69,7 +69,7 @@ HOW TO PLAY:
 - Click where you want to add a cell to the grid
 - Press R to move to the next generation
 - Press C to reset / clear the grid
-- Comment out line 132 out if you want the steps to be automatic''')
+- Comment out line 136 and line 138 out if you want the steps to be automatic''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
@@ -120,6 +120,8 @@ class map(App):
                     else:
                         c[(xc, yc)] = 'd'
                         grid((xc, yc)).visible = True
+                        del c[(xc, yc)]
+                        cc.remove((xc, yc))
             '''
             for coord in c:
                 if c[(x, y)] == 'a':
@@ -130,17 +132,10 @@ class map(App):
                     c[(x, y)] = 'a'
                     cell(coord).visible = True
             '''
-            print(coordlist)
-            print('')
-            print(check)
-            print('')
-            print(neighbor)
-            print('')
-            print(c)
 #-------------------------------------vvvv--------------------------------------
-            self.go = False
+            #self.go = False
 #-------------------------------------^^^^--------------------------------------
-            print('Stopping...')
+            #print('Stopping...')
 #-------------------------------MOUSE_CLICK-------------------------------------
     def mouse(self, event):
         if self.go == False:
