@@ -67,7 +67,7 @@ def rules():
 
 HOW TO PLAY:
 - Click where you want to add a cell to the grid
-- Press R to move to the next generation
+- Press R to move to the next generation or start or stop the program
 - Press C to reset / clear the grid
 - Comment out line 136 and line 138 if you want the steps to be automatic''')
 #==============================RUNNING_PROGRAM==================================
@@ -168,6 +168,11 @@ class map(App):
             row(x)
             x += 50
         c.clear()
+        exist = 0
+        cc = []
+        coordlist = []
+        check = []
+        neighbor = []
 #====================================RUN=======================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
