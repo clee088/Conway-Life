@@ -69,7 +69,7 @@ HOW TO PLAY:
 - Click where you want to add a cell to the grid
 - Press R to move to the next generation or start or stop the program
 - Press C to reset / clear the grid (not fully working)
-- Press U to print the cells' status
+- Press S to print the cell's status
 - Comment out line 138 and line 140 if you want the steps to be automatic''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
@@ -83,7 +83,7 @@ class map(App):
             x += 50
         map.listenKeyEvent('keydown', 'r', self.r)
         map.listenKeyEvent('keydown', 'c', self.c)
-        map.listenKeyEvent('keydown', 'u', self.u)
+        map.listenKeyEvent('keydown', 's', self.s)
         map.listenMouseEvent('click', self.mouse)
 #----------------------------------STEP_FUNC------------------------------------
     def step(self):
@@ -176,10 +176,13 @@ class map(App):
         check = []
         neighbor = []
 #-----------------------------------UPDATE--------------------------------------
-    def u(self, event):
-        print("Printing cells' status")
-        print(c)
-        print('Done')
+    def s(self, event):
+        if c == {}:
+            print('There are no alive cells')
+        else:
+            print("Printing status of cells")
+            print(c)
+            print('Done')
 #====================================RUN=======================================
 myapp = map(ScreenWidth, ScreenHeight)
 myapp.run()
