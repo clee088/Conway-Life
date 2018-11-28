@@ -69,7 +69,7 @@ HOW TO PLAY:
 - Click where you want to add a cell to the grid
 - Press R to move to the next generation
 - Press C to reset / clear the grid
-- Comment out line 136 and line 138 out if you want the steps to be automatic''')
+- Comment out line 136 and line 138 if you want the steps to be automatic''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
