@@ -67,7 +67,8 @@ def rules():
 HOW TO PLAY:
 - Click where you want to add a cell to the grid
 - Press R to move to the next generation
-- Press C to reset / clear the grid''')
+- Press C to reset / clear the grid
+- Comment out line 132 out if you want the steps to be automatic''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
@@ -127,7 +128,9 @@ class map(App):
                     c[(x, y)] = 'a'
                     cell(coord).visible = True
             '''
+#-------------------------------------vvvv--------------------------------------
             self.go = False
+#-------------------------------------^^^^--------------------------------------
             print('Stopping...')
 #-------------------------------MOUSE_CLICK-------------------------------------
     def mouse(self, event):
