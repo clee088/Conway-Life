@@ -75,7 +75,7 @@ HOW TO PLAY:
 
 - Press S to print the cell's status
 
-- Comment out line 139 and line 141 if you want the steps to be automatic
+- Comment out line 143 and line 145 if you want the steps to be automatic
 ''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
@@ -112,7 +112,6 @@ class map(App):
                         for y in range(yc - 50, yc + 100, 50):
                             if y <= ScreenHeight and y >= 0:
                                 neighbor.append((x, y))
-                #removes coord so it's not counting itself
                 neighbor.remove((xc, yc))
                 for (xcoord, ycoord) in neighbor:
                     if (xcoord, ycoord) in coordlist:
