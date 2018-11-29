@@ -56,7 +56,8 @@ def row(x):
         y += 50
 #----------------------------------RULES----------------------------------------
 def rules():
-    print('''RULES: 
+    print('''
+RULES: 
 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
 
 2. Any live cell with two or three live neighbors lives on to the next generation.
@@ -67,9 +68,13 @@ def rules():
 
 HOW TO PLAY:
 - Click where you want to add a cell to the grid
+
 - Press R to move to the next generation or start or stop the program
+
 - Press C to reset / clear the grid (not fully working)
+
 - Press S to print the cell's status
+
 - Comment out line 139 and line 141 if you want the steps to be automatic
 ''')
 #==============================RUNNING_PROGRAM==================================
