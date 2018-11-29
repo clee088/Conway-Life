@@ -18,7 +18,6 @@ line = LineStyle(1, white)
 blackline = LineStyle(0.1, black)
 c = {}
 cc = []
-age = 0
 #================================IMPORTANT======================================
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
@@ -76,7 +75,7 @@ HOW TO PLAY:
 
 - Press S to print the cell's status
 
-- Comment out line 150 and line 152 if you want the steps to be automatic
+- Comment out line 149 and line 151 if you want the steps to be automatic
 ''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
