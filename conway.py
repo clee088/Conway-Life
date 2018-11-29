@@ -18,6 +18,7 @@ line = LineStyle(1, white)
 blackline = LineStyle(0.1, black)
 c = {}
 cc = []
+age = 0
 #================================IMPORTANT======================================
 '''gridnumber is the number of cells that there are for each row
 Recommended is 20. Max is 30 before program starts to slow'''
@@ -75,7 +76,7 @@ HOW TO PLAY:
 
 - Press S to print the cell's status
 
-- Comment out line 143 and line 145 if you want the steps to be automatic
+- Comment out line 150 and line 152 if you want the steps to be automatic
 ''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
@@ -94,6 +95,7 @@ class map(App):
 #----------------------------------STEP_FUNC------------------------------------
     def step(self):
         if self.go == True:
+            age = 0
             coordlist = []
             for (xc, yc) in cc:
                 coordlist.append((xc, yc))
@@ -122,13 +124,18 @@ class map(App):
                     cc.append((xc, yc))
                 elif (xc, yc) in coordlist:
                     if exist == 2 or exist == 3:
-                        c[(xc, yc)] = 'a'
-                        cell((xc, yc)).visible = True
+                        if age % 2 != 0:
+                            c[(xc, yc)] = 'a'
+                            cell((xc, yc)).visible = True
+                        if age % 2 == 0:
+                            c[(xc, yc)] = 'a'
+                            deadcell((xc, yc)).visible = True
                     else:
                         c[(xc, yc)] = 'd'
                         grid((xc, yc)).visible = True
                         del c[(xc, yc)]
                         cc.remove((xc, yc))
+            age += 1
             '''
             for coord in c:
                 if c[(x, y)] == 'a':
