@@ -70,7 +70,8 @@ HOW TO PLAY:
 - Press R to move to the next generation or start or stop the program
 - Press C to reset / clear the grid (not fully working)
 - Press S to print the cell's status
-- Comment out line 138 and line 140 if you want the steps to be automatic''')
+- Comment out line 139 and line 141 if you want the steps to be automatic
+''')
 #==============================RUNNING_PROGRAM==================================
 class map(App):
     def __init__(self, width, height):
